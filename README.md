@@ -20,8 +20,10 @@ $pi->path("/conf/user.php"); //the same...
 * smart path join, even for non-existent paths
 
 ```php
-$PI::joinPath("myapp", "dist/app.zip"); //returns "myapp/dist/app.zip"
-$PI::joinPath("myapp/", "/dist/app.zip"); //returns "myapp/dist/app.zip"
-$PI::joinPath("/var/www", "dist/app.zip"); //returns "/var/www/dist/app.zip", preserves a root slash
+PI::joinPath("myapp", "dist/app.zip"); //returns "myapp/dist/app.zip"
+PI::joinPath("myapp/", "/dist/app.zip"); //returns "myapp/dist/app.zip"
+PI::joinPath("/var/www", "dist/app.zip"); //returns "/var/www/dist/app.zip", preserves a root slash
+
+//note: PI::joinPath does not recognize Windows separator (backslash) 
 ```
  
