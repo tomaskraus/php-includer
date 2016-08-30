@@ -3,7 +3,7 @@
 namespace PhpIncluder;
 
 /**
- * Description of Lw
+ * php-includer object
  *
  * @author Tomáš
  */
@@ -14,6 +14,11 @@ class PI {
 
     private $root;
 
+    /**
+     * creates a new instance of a php-includer object
+     * 
+     * @param string $rootPath optional. root of your web application. If not present, an absolute, canonical path of your web app is computed.
+     */
     public function __construct($rootPath = null) {
         if ($rootPath) {
             $this->root = $rootPath;
@@ -22,11 +27,20 @@ class PI {
         }
     }
 
+    /**
+     * root path of your web application
+     * 
+     * @param string $path optional. input path
+     * @return string your web application root path, with input path added to the end
+     * 
+     * useful for constructing (even non-existent) paths belonging to your web application
+     */
     public function path($path = null) {
         return self::joinPath($this->root, $path);
     }
 
     /**
+     * joins two (even non-existent) paths together
      * 
      * @param string path1 
      * @param string path2 
