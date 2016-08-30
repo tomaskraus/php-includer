@@ -31,9 +31,14 @@ class PI {
      * @param string path1 
      * @param string path2 
      * @return string correct path (with auto inserted/deleted path separator)
+     * 
+     * works correctly with linux-style paths with "/" separator
+     * on Windows, mixed results may occur
      */
     public static function joinPath($path1, $path2) {
         $final_delim = "/";
+        $root_delim = "/";
+        
         $path1Orig = $path1;
         if (!$path1) {
             $path1 = "";
@@ -42,15 +47,13 @@ class PI {
             $path2 = "";
         }
 
-        $path1 = trim($path1, "/");
-        $path2 = trim($path2, "/");
-        $path1 = trim($path1, "\\");
-        $path2 = trim($path2, "\\");
+        $path1 = trim($path1, $final_delim);
+        $path2 = trim($path2, $final_delim);
 
         //preserve the root (Linux, Mac)
         $startChar = substr($path1Orig, 0, 1);
-        if ($startChar == "/") {
-            $path1 = $final_delim . $path1;
+        if ($startChar == $root_delim) {
+            $path1 = $root_delim . $path1;
         }
 
         if (!$path1 && !$path2) {

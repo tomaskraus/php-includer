@@ -36,32 +36,19 @@ class PITest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals("abc", PI::joinPath(null, "abc"));
         $this->assertEquals("abc", PI::joinPath("", "abc"));
         
-        
         $this->assertEquals("abc", PI::joinPath(null, "/abc"));
         $this->assertEquals("abc", PI::joinPath("", "/abc"));
-        
-        $this->assertEquals("abc", PI::joinPath(null, "\\abc"));
-        $this->assertEquals("abc", PI::joinPath("", "\\abc"));
     }
     
     public function test_returns_without_trailing_delimiter() {
         $this->assertEquals("abc", PI::joinPath("abc/", null));
         $this->assertEquals("abc", PI::joinPath("abc/", ""));
         
-        $this->assertEquals("abc", PI::joinPath("abc\\", null));
-        $this->assertEquals("abc", PI::joinPath("abc\\", ""));
-        
         $this->assertEquals("abc", PI::joinPath(null, "abc/"));
         $this->assertEquals("abc", PI::joinPath("", "abc/"));
         
         $this->assertEquals("abc", PI::joinPath(null, "/abc/"));
-        $this->assertEquals("abc", PI::joinPath("", "/abc/"));
-        
-        $this->assertEquals("abc", PI::joinPath(null, "abc\\"));
-        $this->assertEquals("abc", PI::joinPath("", "abc\\"));
-        
-        $this->assertEquals("abc", PI::joinPath(null, "\\abc\\"));
-        $this->assertEquals("abc", PI::joinPath("", "\\abc\\"));
+        $this->assertEquals("abc", PI::joinPath("", "/abc/"));        
     }
     
     
@@ -70,11 +57,7 @@ class PITest extends \PHPUnit_Framework_TestCase {
         
         $this->assertEquals("abc/def", PI::joinPath("abc/", "def"));
         $this->assertEquals("abc/def", PI::joinPath("abc", "/def"));
-        $this->assertEquals("abc/def", PI::joinPath("abc/", "/def"));
-        
-        $this->assertEquals("abc/def", PI::joinPath("abc\\", "def"));
-        $this->assertEquals("abc/def", PI::joinPath("abc", "\\def"));
-        $this->assertEquals("abc/def", PI::joinPath("abc\\", "\\def"));           
+        $this->assertEquals("abc/def", PI::joinPath("abc/", "/def"));                
     }
     
     public function test_preserve_root_delimiter_first_arg() {
@@ -85,9 +68,6 @@ class PITest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals("/abc", PI::joinPath("/abc", null));
         $this->assertEquals("/abc", PI::joinPath("/abc/", ""));
         $this->assertEquals("/abc", PI::joinPath("/abc/", null));
-        
-        $this->assertEquals("/abc", PI::joinPath("/abc\\", ""));
-        $this->assertEquals("/abc", PI::joinPath("/abc\\", null));
         
         $this->assertEquals("/abc/d", PI::joinPath("/abc", "d"));
         $this->assertEquals("/abc/d", PI::joinPath("/abc", "/d"));
