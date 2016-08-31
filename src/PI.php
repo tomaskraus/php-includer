@@ -73,21 +73,25 @@ class PI {
             $path2 = trim($path2, $win_delim);
         }
         
+
+        $finalPath;
+        if (!$path1 && !$path2) {
+            $finalPath = "";
+        } else if (!$path1) {
+            $finalPath = $path2;
+        } else if (!$path2) {
+            $finalPath = $path1;
+        } else {
+            $finalPath = $path1 . $final_delim . $path2;
+        }
+        
         //preserve the root (Linux, Mac)
         $startChar = substr($path1Orig, 0, 1);
         if ($startChar == $root_delim) {
-            $path1 = $root_delim . $path1;
+            $finalPath = $root_delim . $finalPath;
         }
-
-        if (!$path1 && !$path2) {
-            return "";
-        } else if (!$path1) {
-            return $path2;
-        } else if (!$path2) {
-            return $path1;
-        } else {
-            return $path1 . $final_delim . $path2;
-        }
+        
+        return $finalPath;
     }
 
 }

@@ -69,6 +69,9 @@ class PITest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals("/abc", PI::joinPath("/abc/", ""));
         $this->assertEquals("/abc", PI::joinPath("/abc/", null));
         
+        $this->assertEquals("/abc", PI::joinPath("/", "abc"));
+        $this->assertEquals("/abc", PI::joinPath("/", "/abc"));
+        
         $this->assertEquals("/abc/d", PI::joinPath("/abc", "d"));
         $this->assertEquals("/abc/d", PI::joinPath("/abc", "/d"));
     } 
