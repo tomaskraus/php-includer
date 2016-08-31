@@ -45,7 +45,7 @@ echo $pi->path(); //echoes "/var/www/myapp/"
 $pi->path("conf/file-to-be-created.php"); //returns "/var/www/myapp/conf/file-to-be-created.php".
 
 //path-safe include, wherever you are
-include $pi->path("myLib/utils.php"); //includes /var/www/myapp/conf/utils.php
+include $pi->path("myLib/utils.php"); //includes /var/www/myapp/myLib/utils.php
 
 //smart path join, fixes missing or too many separators
 PI::joinPath("myapp/", "/dist/app.zip"); //returns "myapp/dist/app.zip"
@@ -67,7 +67,7 @@ require_once "./../vendor/tomaskraus/php-includer/piLoader.php";
 echo $pi->path(); //echoes "/var/www/myapp/"
 
 //path-safe include, wherever you are (now we are in the "login" subdirectory)
-include $pi->path("myLib/utils.php"); //includes /var/www/myapp/conf/utils.php
+include $pi->path("myLib/utils.php"); //includes /var/www/myapp/myLib/utils.php
 
 ```
 
@@ -86,7 +86,7 @@ if (file_exists($autoLoaderFile)) {
 }
 
 //here you can already use a php-includer object, it is already included 
-include $pi->path("conf/config.php");
+include $pi->path("conf/config.php"); //includes /var/www/myapp/conf/config.php
 ```
 
 From the previous examples, `./pi.global.php` will be included in both `./index.php and` `./login/index.php` files.
