@@ -2,15 +2,6 @@
 
 namespace PhpIncluder;
 
-// vendor/tomaskraus/php-includer
-$LOADER_RELATIVE_PATH_TO_APP_ROOT = "../../..";
-
-//auto-loader
-$autoLoader = __DIR__ . "/" . $LOADER_RELATIVE_PATH_TO_APP_ROOT . "/vendor/autoload.php";
-if (file_exists($autoLoader)) {
-    require $autoLoader;
-}
-
 require_once "src/PI.php";
 
 //root object
