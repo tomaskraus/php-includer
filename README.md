@@ -1,6 +1,8 @@
 # PHPIncluder
 
-A minimalistic PHP library for include/require
+A minimalistic PHP framework for include/require
+
+**note**: Do not use PHPIncluder in libraries, it may not work as expected...
 
 ## features
 
@@ -108,8 +110,3 @@ if (userIsNotLoggedIn) {
 `./user/pi.dir.php` will be applied to all files in (and only) the `./user` directory that includes the `piLoader`.
 
 **note**: `pi.dir.php` inclusion behavior does not act recursively - that is, no eventual `pi.dir.php` from parent directory is included
-
-## Notes
-### including other apps
-If two different apps use a PHPIncluder and one app includes the second one, PHPIncluder may not work as expected.
-
