@@ -47,10 +47,13 @@ class PI {
      * @return string correct path (with auto inserted/deleted path separator)
      * 
      * works correctly with linux-style paths with "/" separator
-     * on Windows, mixed results may occur
+     * on Windows, mixed separator results may occur (but still works in php)
+     *   example: joinPath("C:\\temp", "img\\click.png") returns "C:\\temp/img\\click.png"
+     *   example: joinPath("C:\\temp\\", "img\\click.png") returns the same...
      */
     public static function joinPath($path1, $path2) {
         $final_delim = "/";
+        $win_delim = "\\";
         $root_delim = "/";
         
         $path1Orig = $path1;
@@ -64,6 +67,12 @@ class PI {
         $path1 = trim($path1, $final_delim);
         $path2 = trim($path2, $final_delim);
 
+        if (DIRECTORY_SEPARATOR == $win_delim) {
+            //trim backslashes only in windows
+            $path1 = trim($path1, $win_delim);
+            $path2 = trim($path2, $win_delim);
+        }
+        
         //preserve the root (Linux, Mac)
         $startChar = substr($path1Orig, 0, 1);
         if ($startChar == $root_delim) {

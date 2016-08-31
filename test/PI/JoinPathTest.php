@@ -72,5 +72,22 @@ class PITest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals("/abc/d", PI::joinPath("/abc", "d"));
         $this->assertEquals("/abc/d", PI::joinPath("/abc", "/d"));
     } 
+    
+    public function test_windows_delimiters() {
+        $this->assertEquals("", PI::joinPath("\\", null));
+        $this->assertEquals("", PI::joinPath("\\", ""));
+        
+        $this->assertEquals("abc", PI::joinPath("\\abc", ""));
+        $this->assertEquals("abc", PI::joinPath("abc\\", null));
+        $this->assertEquals("abc", PI::joinPath("\\abc\\", ""));
+        
+        $this->assertEquals("c:\\abc\\d/e", PI::joinPath("c:\\abc\\d", "e"));
+        $this->assertEquals("c:\\abc\\d/e", PI::joinPath("c:\\abc\\d", "/e"));
+        $this->assertEquals("c:\\abc\\d/e", PI::joinPath("c:\\abc\\d", "\\e"));
+        
+        $this->assertEquals("c:\\abc\\d/e", PI::joinPath("c:\\abc\\d\\", "e"));
+        $this->assertEquals("c:\\abc\\d/e", PI::joinPath("c:\\abc\\d\\", "/e"));
+        $this->assertEquals("c:\\abc\\d/e", PI::joinPath("c:\\abc\\d\\", "\\e"));
+    } 
 }
 
