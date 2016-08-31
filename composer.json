@@ -2,7 +2,7 @@
     "name": "tomaskraus/php-includer",
     "keywords": ["php", "include", "require", "path"],
     "homepage": "https://github.com/tomaskraus/php-includer",
-    "description": "A minimalistic PHP library for include/require",
+    "description": "A minimalistic PHP framework for include/require",
     "type": "library",
     "license": "MIT",
     "authors": [
