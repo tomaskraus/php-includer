@@ -17,7 +17,7 @@ composer require tomaskraus/php-includer
 , or include this snippet to `composer.json`
 ```json    
     "require": {        
-        "tomaskraus/php-includer": "^0.3"
+        "tomaskraus/php-includer": "^0.4"
     },
 ```
 
