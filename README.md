@@ -2,8 +2,6 @@
 
 A minimalistic PHP framework for include/require
 
-**note**: Do not use PHPIncluder in libraries, it may not work as expected...
-
 ## features
 
 * Auto global include
@@ -24,6 +22,9 @@ composer require tomaskraus/php-includer
 ```
 
 ## PHPIncluder usage
+
+1. **Use as a library**: Create a new `PI` (php includer) instance with your application root path as a parameter.
+2. **Use as a framework**: Include `piLoader.php` in your requested page. It guesses your application path and creates a new PI instance (a `$pi` variable) with that path guessed. 
 
 Assume we have our php application in `/var/www/myApp`. A `/var/www/myApp` is our application root directory (`./`). 
 
@@ -87,5 +88,3 @@ if (file_exists($autoLoaderFile)) {
 }
 
 ```
-
-From the previous examples, `./pi.global.php` will be included in both `./index.php and` `./login/index.php` files.
