@@ -11,12 +11,6 @@
             "email": "tomas.krausik@gmail.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/tomaskraus/php-includer"
-        }
-    ],
     "require": {
         "php": "^5.3|^7.0"
     },
