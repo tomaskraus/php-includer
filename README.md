@@ -12,16 +12,14 @@ A minimalistic PHP framework for include/require
 
 ## Installation
 
-via composer. include this snippet to composer.json
-```json
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/tomaskraus/php-includer"
-        }
-    ],
+Via composer:
+```
+composer require tomaskraus/php-includer
+```
+, or include this snippet to `composer.json`
+```json    
     "require": {        
-        "tomaskraus/php-includer": "@alpha"
+        "tomaskraus/php-includer": "^0.3"
     },
 ```
 
@@ -32,13 +30,13 @@ Assume we have our php application in `/var/www/myApp`. A `/var/www/myApp` is ou
 example: file `./index.php`
 ```php
 <?php
-//require piLoader
+//A loader. Guesses an application root path and initializes a PhpIncluder instance.
 require_once "./vendor/tomaskraus/php-includer/piLoader.php";
 
 //once piLoader is included, a php-includer object ($pi) is available
 
 //provides a web application root path
-echo $pi->path(); //echoes "/var/www/myapp/"
+echo $pi->path(); //echoes "/var/www/myApp/"
 
 //we can create new, non-existing path strings, based on a web application root
 $pi->path("conf/file-to-be-created.php"); //returns "/var/www/myapp/conf/file-to-be-created.php".
@@ -74,7 +72,7 @@ include $pi->path("myLib/utils.php"); //includes /var/www/myapp/myLib/utils.php
 
 If there is a `pi.global.php` file in the application root directory, it is automatically included, wherever you include/require `piLoader`, regardless of (sub)directory.
 
-**example**: `./pi.global.php`
+**example**: file `./pi.global.php`
 ```php
 <?php
 
