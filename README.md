@@ -30,7 +30,7 @@ via composer. include this snippet to composer.json
 
 Assume we have our php application in `/var/www/myApp`. A `/var/www/myApp` is our application root directory (`./`). 
 
-example: `./index.php`
+example: file `./index.php`
 ```php
 <?php
 //require piLoader
@@ -54,7 +54,7 @@ PI::joinPath("/var/www", "dist/app.zip"); //returns "/var/www/dist/app.zip", pre
 PI::joinPath("C:\\www\\", "/dist/app.zip"); //returns "C:\\www/dist/app.zip", mixed result for Windows path (still works in PHP) 
 PI::joinPath("C:\\www", "dist/app.zip"); //returns the same...
 ```
-**example**: `./login/index.php`
+**example**: file `./login/index.php`
 ```php
 <?php
 //require piLoader
@@ -79,34 +79,16 @@ If there is a `pi.global.php` file in the application root directory, it is auto
 ```php
 <?php
 
-//class auto loader
+//here you can already use a php-includer object, it is already included 
+include $pi->path("conf/config.php"); //includes /var/www/myapp/conf/config.php
+
+
+//This file is a right place to write the class auto loader
 $autoLoaderFile = __DIR__ . "/vendor/autoload.php";
 if (file_exists($autoLoaderFile)) {
     require_once $autoLoaderFile;
 }
 
-//here you can already use a php-includer object, it is already included 
-include $pi->path("conf/config.php"); //includes /var/www/myapp/conf/config.php
 ```
 
 From the previous examples, `./pi.global.php` will be included in both `./index.php and` `./login/index.php` files.
-
-### Auto include, based on a directory
-
-If there is a `pi.dir.php` file in a `directory`, it is automatically included, wherever you include/require `piLoader` in php files in that `directory`.
-
-**example**: `./user/pi.dir.php`
-```php
-<?php
-//here you can already use a php-includer object, it is already included
-include $pi->path("conf/config.php");
-
-//restrict the access
-if (userIsNotLoggedIn) {
-    require $pi->path("login/index.php"); //requires "/var/www/myApp/login/index.php"
-}
-```
-
-`./user/pi.dir.php` will be applied to all files in (and only) the `./user` directory that includes the `piLoader`.
-
-**note**: `pi.dir.php` inclusion behavior does not act recursively - that is, no eventual `pi.dir.php` from parent directory is included

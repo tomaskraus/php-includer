@@ -13,8 +13,3 @@ if (file_exists($fileToIncludeAlways)) {
     include_once $fileToIncludeAlways;
 }
 
-//within the directory of a top-level includer
-$fileToIncludeOnDirectoryLevel = "pi.dir.php";
-if (file_exists($fileToIncludeOnDirectoryLevel)) {
-    include_once $fileToIncludeOnDirectoryLevel;
-}
