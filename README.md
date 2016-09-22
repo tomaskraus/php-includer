@@ -24,9 +24,9 @@ composer require tomaskraus/php-includer
 ## PHPIncluder usage
 
 1. **Use as a library**: Create a new `PI` (php includer) instance with your application root path as a parameter.
-2. **Use as a framework**: Include `piLoader.php` in your requested page. It guesses your application path and creates a new PI instance (a `$pi` variable) with that path guessed. 
+2. **Use as a framework**: Include `piLoader.php` in your requested page. It guesses your application root path and creates a new PI instance (a `$pi` variable) with that path guessed. 
 
-Assume we have our php application in `/var/www/myApp`. A `/var/www/myApp` is our application root directory (`./`). 
+Assume we have our php application in `/var/www/myApp`. A `/var/www/myApp` is our application root path (`./`). 
 
 example: file `./index.php`
 ```php
