@@ -7,7 +7,6 @@ A minimalistic PHP framework for include/require
 ## features
 
 * Auto global include
-* Auto include, based on a directory 
 * application root path
 * smart path join
 
