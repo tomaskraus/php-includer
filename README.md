@@ -1,5 +1,7 @@
 # php-includer
 
+***NOTE:*** This project is ***Obsolete***. Use the [path-utils](https://github.com/tomaskraus/path-utils) library - it does one thing and does it good.
+
 A minimalistic PHP library/framework for include/require
 
 ## features
